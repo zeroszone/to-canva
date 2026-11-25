@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<style>
+  .contenedor-sigla {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    padding: 20px;
+  }
+
+  .letras {
+    display: flex;
+    gap: 10px;
+  }
+
+  .letra-btn {
+    font-size: 2.5rem;
+    font-weight: bold;
+    color: #2c3e50;
+    background-color: #ecf0f1;
+    border: 2px solid #bdc3c7;
+    border-radius: 10px;
+    width: 65px;
+    height: 65px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+  }
+
+  .letra-btn:hover, .letra-btn.activa {
+    background-color: #3498db;
+    color: white;
+    border-color: #2980b9;
+    transform: scale(1.05);
+  }
+
+  .definicion-caja {
+    background-color: #f8f9fa;
+    border-left: 5px solid #3498db;
+    padding: 15px 20px;
+    border-radius: 6px;
+    min-width: 250px;
+    min-height: 40px;
+    display: flex;
+    align-items: center;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+  }
+
+  .definicion-texto {
+    font-size: 1.2rem;
+    color: #333;
+    margin: 0;
+  }
+</style>
+</head>
+<body>
+
+<div class="contenedor-sigla">
+  <!-- Cambia las letras y sus definiciones en data-def -->
+  <div class="letras">
+    <button class="letra-btn" onclick="mostrarDef(this)" data-def="<strong>O</strong>rganización: Estructura administrativa del proyecto.">O</button>
+    <button class="letra-btn" onclick="mostrarDef(this)" data-def="<strong>N</strong>acional: Alcance en todo el territorio del país.">N</button>
+    <button class="letra-btn" onclick="mostrarDef(this)" data-def="<strong>U</strong>nida: Colaboración conjunta entre sectores.">U</button>
+  </div>
+
+  <!-- Aquí aparece la definición al lado -->
+  <div class="definicion-caja">
+    <p class="definicion-texto" id="pantalla-def">👈 Haz clic en una letra</p>
+  </div>
+</div>
+
+<script>
+  function mostrarDef(boton) {
+    // Quita el estado activo de todas las letras
+    document.querySelectorAll('.letra-btn').forEach(btn => btn.classList.remove('activa'));
+    // Activa la letra presionada
+    boton.classList.add('activa');
+    // Muestra la definición al lado
+    document.getElementById('pantalla-def').innerHTML = boton.getAttribute('data-def');
+  }
+</script>
+
+</body>
+</html>
